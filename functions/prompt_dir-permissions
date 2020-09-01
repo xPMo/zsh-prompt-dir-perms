@@ -1,0 +1,38 @@
+#!/usr/bin/env zsh
+setopt localoptions octalzeroes
+
+# For $usergroups
+zmodload zsh/parameter
+# For zstat
+zmodload -F zsh/stat b:zstat
+
+local -A colors
+zstyle -g colors :prompt:dir-perms color
+
+local REPLY u g o nocolor=${colors[default]:-'%F{8}'} 
+zstyle -g REPLY :prompt:dir-perms format
+
+local -a stat_{n,s}
+zstat    -A stat_n .
+zstat -s -A stat_s .
+
+# Use EUID instead of UID, should be more reliable
+if ((EUID == stat_n[5])); then
+	# Prepend every non-hyphen character with $colors[user]
+	# Prepend every     hyphen character with $colors[default]
+	# Append string with $colors[default]
+	u=${${stat_s[3][2,4]//(#m)[^-]##/$colors[user]$MATCH}//-/$nocolor-}$nocolor 
+else
+	# Not our directory, color with $colors[default]
+	u=$nocolor${stat_s[3][2,4]}$nocolor 
+fi
+if [[ -n ${(M)usergroups:#$stat_n[6]} ]]; then
+	g=${${stat_s[3][5,7]//(#m)[^-]##/$colors[group]$MATCH}//-/$nocolor-}$nocolor 
+else
+	g=$nocolor${stat_s[3][5,7]}$nocolor 
+fi
+
+o=${${stat_s[3][8,10]//(#m)[^-]##/$colors[other]$MATCH}//-/$nocolor-}$nocolor 
+
+zformat -f REPLY $nocolor${REPLY:-'%u%g%o'} u:$u g:$g o:$o
+p10k segment -t $REPLY

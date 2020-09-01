@@ -1,0 +1,1 @@
+prompt-dir-permissions.zsh
