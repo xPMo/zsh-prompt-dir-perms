@@ -9,8 +9,8 @@ zmodload -F zsh/stat b:zstat
 local -A colors
 zstyle -g colors :prompt:dir-perms color
 
-local REPLY u g o nocolor=${colors[default]:-'%F{8}'} 
-zstyle -g REPLY :prompt:dir-perms format
+local fmt u g o nocolor=${colors[default]:-'%F{8}'} 
+zstyle -g fmt :prompt:dir-perms format
 
 local -a stat_{n,s}
 zstat    -A stat_n .
@@ -34,5 +34,4 @@ fi
 
 o=${${stat_s[3][8,10]//(#m)[^-]##/$colors[other]$MATCH}//-/$nocolor-}$nocolor 
 
-zformat -f REPLY $nocolor${REPLY:-'%u%g%o'} u:$u g:$g o:$o
-p10k segment -t $REPLY
+zformat -f REPLY $nocolor${fmt:-'%u%g%o'} u:$u g:$g o:$o
