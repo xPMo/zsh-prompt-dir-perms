@@ -1,5 +1,42 @@
 # Directory Permissions Segment for Zsh Prompts
 
+
+## Installation
+
+**Antigen**:
+```zsh
+antigen bundle xPMo/zsh-prompt-dir-permss
+antigen apply
+```
+
+**Zgen**:
+```zsh
+zgen load xPMo/zsh-prompt-dir-perms
+zgen save
+```
+
+
+**Zplug**:
+```zsh
+zplug xPMo/zsh-prompt-dir-perms
+```
+
+**Zplugin**:
+```zsh
+zplugin ice wait "0"
+zplugin light xPMo/zsh-prompt-dir-perms
+
+# Optionally, track the latest development version:
+zplugin ice wait "0" ver"dev"
+zplugin light xPMo/zsh-prompt-dir-perms
+```
+
+**Manually**: Clone the project, and then source it:
+```zsh
+source /path/to/zsh-prompt-dir-perms/prompt-dir-perms.plugin.zsh
+```
+
+
 ## Prompt Support
 
 <details>
