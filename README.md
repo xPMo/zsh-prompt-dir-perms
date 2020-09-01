@@ -1,5 +1,6 @@
 # Directory Permissions Segment for Zsh Prompts
 
+![Screenshot](https://raw.githubusercontent.com/xPMo/zsh-prompt-dir-perms/img/screenshot-0.png)
 
 ## Installation
 
