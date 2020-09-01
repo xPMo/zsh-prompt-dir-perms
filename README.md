@@ -6,7 +6,7 @@
 
 **Antigen**:
 ```zsh
-antigen bundle xPMo/zsh-prompt-dir-permss
+antigen bundle xPMo/zsh-prompt-dir-perms
 antigen apply
 ```
 
