@@ -1,7 +1,7 @@
 # Directory Permissions Segment for Zsh Prompts
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/xPMo/zsh-prompt-dir-perms/img/screenshot-0.png" />
+<img width=100% src="https://raw.githubusercontent.com/xPMo/zsh-prompt-dir-perms/img/screenshot-0.png" />
 </p>
 
 Make sure to look at the
