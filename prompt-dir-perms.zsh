@@ -14,6 +14,6 @@ return 0
 
 # =============================================================
 # It's just one function to load, but you need to configure it:
-# Example (add to your ~/.p10k.zsh | .zshrc | etc.):
+# Example (add to your ~/.p10k.zsh | ~/.zshrc | etc.):
 zstyle :prompt:dir-perms color user '%F{green}' group '%F{yellow}' other '%F{magenta}' default '%F{8}'
 zstyle :prompt:dir-perms format '[%u%g%o]:'
