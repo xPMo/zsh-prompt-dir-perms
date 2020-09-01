@@ -9,7 +9,7 @@ then
 fi
 # }}}
 
-autoload -Uz prompt_dir-permissions
+autoload -Uz prompt_dir_perms::build
 return 0
 
 # =============================================================
