@@ -26,10 +26,6 @@ zplug xPMo/zsh-prompt-dir-perms
 ```zsh
 zplugin ice wait "0"
 zplugin light xPMo/zsh-prompt-dir-perms
-
-# Optionally, track the latest development version:
-zplugin ice wait "0" ver"dev"
-zplugin light xPMo/zsh-prompt-dir-perms
 ```
 
 **Manually**: Clone the project, and then source it:
