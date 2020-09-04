@@ -1,20 +1,16 @@
 #!/usr/bin/env zsh
 setopt localoptions octalzeroes
 
-# For $usergroups
-zmodload zsh/parameter
-# For zstat
-zmodload -F zsh/stat b:zstat
-
 local -A colors
 zstyle -g colors :prompt:dir-perms color
 
-local fmt u g o nocolor=${colors[default]:-'%F{8}'} 
+local fmt u g o a nocolor=${colors[default]:-'%F{8}'}
 zstyle -g fmt :prompt:dir-perms format
 
-local -a stat_{n,s}
+local -a stat_{n,s} attr
 zstat    -A stat_n .
 zstat -s -A stat_s .
+zlistattr . attr
 
 # Use EUID instead of UID, should be more reliable
 if ((EUID == stat_n[5])); then
@@ -34,4 +30,7 @@ fi
 
 o=${${stat_s[3][8,10]//(#m)[^-]##/$colors[other]$MATCH}//-/$nocolor-}$nocolor 
 
-zformat -f REPLY $nocolor${fmt:-'%u%g%o'} u:$u g:$g o:$o
+# If the current directory has extended attributes
+(($#attr)) && a=${colors[attr]:-$nocolor}+$nocolor
+
+zformat -f REPLY $nocolor${fmt:-'%u%g%o%a'} u:$u g:$g o:$o a:$a

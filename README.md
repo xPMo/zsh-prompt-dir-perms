@@ -109,8 +109,8 @@ function prompt_dir_perms () {
 
 ```zsh
 # Set the colors for each 'rwx' triplet
-zstyle :prompt:dir-perms color user '%F{green}' group '%F{yellow}' other '%F{magenta}' default '%F{8}'
+zstyle :prompt:dir-perms color user '%F{green}' group '%F{yellow}' other '%F{magenta}' default '%F{8}' attr '%F{white}'
 # Format the results:
-zstyle :prompt:dir-perms format '[%u%g%o]'
+zstyle :prompt:dir-perms format '[%u%g%o%a]'
 ```
 
