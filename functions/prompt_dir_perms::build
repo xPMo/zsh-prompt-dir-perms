@@ -4,7 +4,7 @@ setopt localoptions octalzeroes
 local -A colors
 zstyle -g colors :prompt:dir-perms color
 
-local fmt u g o a nocolor=${colors[default]:-'%F{8}'}
+local MATCH fmt u g o a nocolor=${colors[default]:-'%F{8}'}
 zstyle -g fmt :prompt:dir-perms format
 
 local -a stat_{n,s} attr
