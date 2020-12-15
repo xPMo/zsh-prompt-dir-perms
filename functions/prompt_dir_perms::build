@@ -2,10 +2,12 @@
 setopt localoptions octalzeroes
 
 local -A colors
-zstyle -g colors :prompt:dir-perms color
+zstyle -a :prompt:dir-perms:${PWD//:/.} color colors ||
+	zstyle -g colors :prompt:dir-perms color
 
 local MATCH fmt u g o a nocolor=${colors[default]:-'%F{8}'}
-zstyle -g fmt :prompt:dir-perms format
+zstyle -a :prompt:dir-perms:${PWD//:/.} format fmt ||
+	zstyle -g fmt :prompt:dir-perms format
 
 local -a stat_{n,s} attr
 zstat    -A stat_n .
