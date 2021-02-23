@@ -12,7 +12,7 @@ zstyle -a :prompt:dir-perms:${PWD//:/.} format fmt ||
 local -a stat_{n,s} attr
 zstat    -A stat_n .
 zstat -s -A stat_s .
-zlistattr . attr
+zlistattr . attr 2>/dev/null
 
 # Use EUID instead of UID, should be more reliable
 if ((EUID == stat_n[5])); then
