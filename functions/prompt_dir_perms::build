@@ -19,18 +19,18 @@ if ((EUID == stat_n[5])); then
 	# Prepend every non-hyphen character with $colors[user]
 	# Prepend every     hyphen character with $colors[default]
 	# Append string with $colors[default]
-	u=${${stat_s[3][2,4]//(#m)[^-]##/$colors[user]$MATCH}//-/$nocolor-}$nocolor 
+	u=${${stat_s[3][2,4]//(#m)[^-]##/$colors[user]$MATCH}//-/$nocolor-}$nocolor
 else
 	# Not our directory, color with $colors[default]
-	u=$nocolor${stat_s[3][2,4]}$nocolor 
+	u=$nocolor${stat_s[3][2,4]}$nocolor
 fi
-if [[ -n ${(M)usergroups:#$stat_n[6]} ]]; then
-	g=${${stat_s[3][5,7]//(#m)[^-]##/$colors[group]$MATCH}//-/$nocolor-}$nocolor 
+if [[ -n ${(M)__dir_perms_usergroups:#$stat_n[6]} ]]; then
+	g=${${stat_s[3][5,7]//(#m)[^-]##/$colors[group]$MATCH}//-/$nocolor-}$nocolor
 else
-	g=$nocolor${stat_s[3][5,7]}$nocolor 
+	g=$nocolor${stat_s[3][5,7]}$nocolor
 fi
 
-o=${${stat_s[3][8,10]//(#m)[^-]##/$colors[other]$MATCH}//-/$nocolor-}$nocolor 
+o=${${stat_s[3][8,10]//(#m)[^-]##/$colors[other]$MATCH}//-/$nocolor-}$nocolor
 
 # If the current directory has extended attributes
 (($#attr)) && a=${colors[attr]:-$nocolor}+$nocolor

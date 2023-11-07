@@ -10,6 +10,8 @@ fi
 
 # For $usergroups
 zmodload zsh/parameter
+# $usergroups is slow, load it now
+typeset -g __dir_perms_usergroups=($usergroups)
 # For zstat
 zmodload -F zsh/stat b:zstat
 # For zlistattr
